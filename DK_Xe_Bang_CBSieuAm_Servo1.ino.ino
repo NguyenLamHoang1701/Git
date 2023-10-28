@@ -106,41 +106,41 @@ void dithang()
 {
   analogWrite(enbA, 100);
   analogWrite(enbB, 100);
-  digitalWrite(in1, 1);
-  digitalWrite(in2, 0);
-  digitalWrite(in3, 1);
-  digitalWrite(in4, 0);
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
 
 
 }
 void dunglai(){
   analogWrite(enbA, 0);
   analogWrite(enbB, 0);
-  digitalWrite(in1, 0);
-  digitalWrite(in2, 0);
-  digitalWrite(in3, 0);
-  digitalWrite(in4, 0);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, LOW);
   }
 
-void disangphai()
+void disangtrai()
 {
   analogWrite(enbA, 100);
   analogWrite(enbB, 0);
-  digitalWrite(in1, 0);
-  digitalWrite(in2, 1);
-  digitalWrite(in3, 1);
-  digitalWrite(in4, 0);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
 
 
 }
-void disangtrai()
+void disangphai()
 {
   analogWrite(enbA, 0);
   analogWrite(enbB, 100);
-  digitalWrite(in1, 1);
-  digitalWrite(in2, 0);
-  digitalWrite(in3, 0);
-  digitalWrite(in4, 1);
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4,HIGH );
 
 }
 
@@ -148,10 +148,10 @@ void dilui()
 {
   analogWrite(enbA, 100);
   analogWrite(enbB, 100);
-  digitalWrite(in1, 0);
-  digitalWrite(in2, 1);
-  digitalWrite(in3, 0);
-  digitalWrite(in4, 1);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
 
 }
 

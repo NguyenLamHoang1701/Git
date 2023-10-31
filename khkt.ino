@@ -13,7 +13,7 @@ int in4 = 10;
 int enbB=11;      
 int dongcoservo = 8;   
 
-int gioihan = 20;//khoảng cách nhận biết vật 
+int gioihan = 23;//khoảng cách nhận biết vật 
 int i;
 int x = 0;
 unsigned long thoigian; 
@@ -59,21 +59,21 @@ void loop()
   khoangcach = 0;
   dokhoangcach();
   Serial.println(khoangcach);
-  if (khoangcach > gioihan || khoangcach == 0)
+  if (khoangcach => gioihan || khoangcach == 0)
   {
       dithang();
       Serial.println("Di toi");
   }
   else
   {
-    dunglai();delay(300);
+    
     quaycbsangtrai();
     dokhoangcach();
-    Serial.println(khoangcach);
+  
     khoangcachtrai = khoangcach;
     quaycbsangphai();
     dokhoangcach();
-    Serial.println(khoangcach);
+
     khoangcachphai = khoangcach;
     if (khoangcachphai < 15 && khoangcachtrai < 15) {
       dilui();delay(300);dunglai();delay(300);
@@ -82,9 +82,11 @@ void loop()
     }
     else
     {
-      if (khoangcachphai >= khoangcachtrai)
-      { dilui();delay(300);dunglai();delay(300);      
-        disangphai();
+      if (khoangcachphai > khoangcachtrai)
+      { dilui();delay(300);dunglai();delay(300);  
+        dithang() ; delay(200);    
+        disangtrai(); delay(300);
+      
         Serial.println("Di sang phai");
         delay(400);dunglai();delay(300);
       }
@@ -98,6 +100,37 @@ void loop()
   }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void dithang()
 {
   analogWrite(enbA, 100);

@@ -20,7 +20,7 @@ unsigned long thoigian;
 int khoangcach;          
 int khoangcachtrai, khoangcachphai;
 int maxspeed=30;
-void dithangcham();
+
 void dokhoangcach();
 void dithang(int duongdi);
 void disangtrai();
@@ -75,7 +75,7 @@ void loop()
   }
   else
   {
-    dithangcham();delay(200);
+    
     dunglai(); delay(500);
     quaycbsangtrai();
     dokhoangcach();
@@ -93,20 +93,20 @@ void loop()
     else
     {
       if (khoangcachphai > khoangcachtrai)
-      { dilui();delay(300);dunglai();delay(300); 
-        dithangcham() ; delay(2000);
-        dilui() ; delay(200);    
-        disangtrai(); delay(700);
+      { dilui();delay(100);dunglai();delay(300); 
+        
+        dilui() ; delay(100);    
+        disangphai(); delay(500);
       
       
         
       }
-      if (khoangcachphai < khoangcachtrai)
-      { dilui();delay(300);dunglai();delay(300);
-      dithangcham() ; delay(2000);
-        disangphai();delay(700);
-        Serial.println("Di sang trai");
-        delay(400);dunglai();delay(300);
+      if (khoangcachphai < khoangcachtrai){
+        dilui();delay(100);dunglai();delay(300);
+        
+        disangtrai();delay(500);
+        
+        
       }
     }
   }
@@ -141,20 +141,12 @@ void loop()
 
 
 
-void dithangcham(){
-  analogWrite(enbA, 0);
-  analogWrite(enbB, 0);
-  digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, HIGH);
-  digitalWrite(in4, LOW);
 
-}
 
 void dithang()
 {
-  analogWrite(enbA, 50);
-  analogWrite(enbB, 50);
+  analogWrite(enbA, 70);
+  analogWrite(enbB, 70);
   digitalWrite(in1, HIGH);
   digitalWrite(in2, LOW);
   digitalWrite(in3, HIGH);
@@ -173,7 +165,7 @@ void dunglai(){
 
 void disangphai()
 {
-  analogWrite(enbA, 200);
+  analogWrite(enbA, 150);
   analogWrite(enbB, 50);
   digitalWrite(in1, LOW);
   digitalWrite(in2, HIGH);
@@ -185,7 +177,7 @@ void disangphai()
 void disangtrai()
 {
   analogWrite(enbA, 50);
-  analogWrite(enbB, 200);
+  analogWrite(enbB, 150);
   digitalWrite(in1, HIGH);
   digitalWrite(in2, LOW);
 

@@ -95,8 +95,8 @@ void loop()
       if (khoangcachphai > khoangcachtrai)
       { dilui();delay(100);dunglai();delay(300); 
         
-        dilui() ; delay(100);    
-        disangphai(); delay(500);
+           
+        disangphai(); delay(700);
       
       
         
@@ -104,7 +104,7 @@ void loop()
       if (khoangcachphai < khoangcachtrai){
         dilui();delay(100);dunglai();delay(300);
         
-        disangtrai();delay(500);
+        disangtrai();delay(700);
         
         
       }
@@ -145,8 +145,8 @@ void loop()
 
 void dithang()
 {
-  analogWrite(enbA, 70);
-  analogWrite(enbB, 70);
+  analogWrite(enbA, 100);
+  analogWrite(enbB, 100);
   digitalWrite(in1, HIGH);
   digitalWrite(in2, LOW);
   digitalWrite(in3, HIGH);
@@ -165,20 +165,20 @@ void dunglai(){
 
 void disangphai()
 {
-  analogWrite(enbA, 150);
-  analogWrite(enbB, 50);
+  analogWrite(enbA, 250);
+  analogWrite(enbB, 80);
   digitalWrite(in1, LOW);
   digitalWrite(in2, HIGH);
-  digitalWrite(in3, HIGH);
+  digitalWrite(in3, LOW);
   digitalWrite(in4, LOW);
 
 
 }
 void disangtrai()
 {
-  analogWrite(enbA, 50);
-  analogWrite(enbB, 150);
-  digitalWrite(in1, HIGH);
+  analogWrite(enbA, 80);
+  analogWrite(enbB, 250);
+  digitalWrite(in1, LOW);
   digitalWrite(in2, LOW);
 
   digitalWrite(in3, LOW);
@@ -188,8 +188,8 @@ void disangtrai()
 
 void dilui()
 {
-  analogWrite(enbA, 100);
-  analogWrite(enbB, 100);
+  analogWrite(enbA, 120);
+  analogWrite(enbB, 120);
   digitalWrite(in1, LOW);
   digitalWrite(in2, HIGH);
   digitalWrite(in3, LOW);

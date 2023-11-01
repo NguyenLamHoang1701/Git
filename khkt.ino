@@ -13,14 +13,14 @@ int in4 = 10;
 int enbB=11;      
 int dongcoservo = 8;   
 
-int gioihan = 23;//khoảng cách nhận biết vật 
+int gioihan = 25;//khoảng cách nhận biết vật 
 int i;
 int x = 0;
 unsigned long thoigian; 
 int khoangcach;          
 int khoangcachtrai, khoangcachphai;
 int maxspeed=30;
-
+void dithangcham();
 void dokhoangcach();
 void dithang(int duongdi);
 void disangtrai();
@@ -54,19 +54,29 @@ void setup() {
 
 }
 
+
+
+
+
+
+
+
+
+
 void loop()
 {
   khoangcach = 0;
   dokhoangcach();
   Serial.println(khoangcach);
-  if (khoangcach => gioihan || khoangcach == 0)
+  if (khoangcach > gioihan || khoangcach == 0)
   {
       dithang();
       Serial.println("Di toi");
   }
   else
   {
-    
+    dithangcham();delay(200);
+    dunglai(); delay(500);
     quaycbsangtrai();
     dokhoangcach();
   
@@ -75,24 +85,26 @@ void loop()
     dokhoangcach();
 
     khoangcachphai = khoangcach;
-    if (khoangcachphai < 15 && khoangcachtrai < 15) {
+    if (khoangcachphai < 20 && khoangcachtrai < 20) {
       dilui();delay(300);dunglai();delay(300);
-      Serial.println("Di lui");
+      
       
     }
     else
     {
       if (khoangcachphai > khoangcachtrai)
-      { dilui();delay(300);dunglai();delay(300);  
-        dithang() ; delay(200);    
-        disangtrai(); delay(300);
+      { dilui();delay(300);dunglai();delay(300); 
+        dithangcham() ; delay(2000);
+        dilui() ; delay(200);    
+        disangtrai(); delay(700);
       
-        Serial.println("Di sang phai");
-        delay(400);dunglai();delay(300);
+      
+        
       }
       if (khoangcachphai < khoangcachtrai)
       { dilui();delay(300);dunglai();delay(300);
-        disangtrai();
+      dithangcham() ; delay(2000);
+        disangphai();delay(700);
         Serial.println("Di sang trai");
         delay(400);dunglai();delay(300);
       }
@@ -129,12 +141,20 @@ void loop()
 
 
 
+void dithangcham(){
+  analogWrite(enbA, 0);
+  analogWrite(enbB, 0);
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+  digitalWrite(in3, HIGH);
+  digitalWrite(in4, LOW);
 
+}
 
 void dithang()
 {
-  analogWrite(enbA, 100);
-  analogWrite(enbB, 100);
+  analogWrite(enbA, 50);
+  analogWrite(enbB, 50);
   digitalWrite(in1, HIGH);
   digitalWrite(in2, LOW);
   digitalWrite(in3, HIGH);
@@ -153,10 +173,10 @@ void dunglai(){
 
 void disangphai()
 {
-  analogWrite(enbA, 100);
-  analogWrite(enbB, 0);
-  digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
+  analogWrite(enbA, 200);
+  analogWrite(enbB, 50);
+  digitalWrite(in1, LOW);
+  digitalWrite(in2, HIGH);
   digitalWrite(in3, HIGH);
   digitalWrite(in4, LOW);
 
@@ -164,12 +184,13 @@ void disangphai()
 }
 void disangtrai()
 {
-  analogWrite(enbA, 0);
-  analogWrite(enbB, 100);
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);
-  digitalWrite(in3, HIGH);
-  digitalWrite(in4, LOW);
+  analogWrite(enbA, 50);
+  analogWrite(enbB, 200);
+  digitalWrite(in1, HIGH);
+  digitalWrite(in2, LOW);
+
+  digitalWrite(in3, LOW);
+  digitalWrite(in4, HIGH);
 
 }
 
@@ -192,7 +213,7 @@ void dokhoangcach()
   digitalWrite(trig, LOW); 
   delayMicroseconds(2);
   digitalWrite(trig, HIGH);  
-  delayMicroseconds(10); 
+  delayMicroseconds(15); 
   digitalWrite(trig, LOW); 
 
 
@@ -206,15 +227,15 @@ void dokhoangcach()
 
 void quaycbsangtrai()
 {
-  myservo.write(150);              // tell servo to go to position in variable 'pos'
-  delay(1000);
+  myservo.write(135);              // tell servo to go to position in variable 'pos'
+  delay(600);
   dokhoangcach();
   myservo.write(90);              // tell servo to go to position in variable 'pos'
 }
 void quaycbsangphai()
 {
-  myservo.write(30);              // tell servo to go to position in variable 'pos'
-  delay(1000);
+  myservo.write(45);              // tell servo to go to position in variable 'pos'
+  delay(600);
   dokhoangcach();
   myservo.write(90);              // tell servo to go to position in variable 'pos'
 }
